@@ -16,7 +16,7 @@
     "quotes": "off",
     "comma-dangle": ["warn"],
     "no-unused-vars": [
-      "error",
+      "warn",
       {
         "vars": "local",
         "args": "none"
