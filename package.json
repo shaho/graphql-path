@@ -1,0 +1,19 @@
+{
+  "name": "graphql-path",
+  "version": "1.0.0",
+  "description": "GraphQL Path",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaho/graphql-path.git"
+  },
+  "author": "Shaho Toofani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shaho/graphql-path/issues"
+  },
+  "homepage": "https://github.com/shaho/graphql-path#readme"
+}
