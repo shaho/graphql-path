@@ -17,6 +17,8 @@
     "object-shorthand": "off", // Object propery shorthand
     "no-else-return": "off",
     "semi": "warn",
+    "arrow-parens": "off",
+    "arrow-body-style": "off",
     "comma-dangle": ["warn"],
     "no-unused-vars": [
       "warn",
