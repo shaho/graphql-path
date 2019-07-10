@@ -46,13 +46,45 @@ const posts = [
   },
 ];
 
+let comments = [
+  {
+    id: "1",
+    text:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
+    author: "1",
+    post: "1",
+  },
+  {
+    id: "2",
+    text:
+      "commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+    author: "1",
+    post: "1",
+  },
+  {
+    id: "3",
+    text: "commodo consequat. Duis aute irure dolor ",
+    author: "2",
+    post: "2",
+  },
+  {
+    id: "4",
+    text:
+      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia d...",
+    author: "3",
+    post: "2",
+  },
+];
+
 // Type defenintions (Schema)
 const typeDefs = `
   type Query {
     users(query: String): [User!]!
     posts(query: String): [Post!]!
+    comments: [Comment!]!
     me: User!
     post: Post!
+    
 
     test: User!
   }
@@ -72,11 +104,17 @@ const typeDefs = `
     published: Boolean!
     author: User!
   }
+
+  type Comment {
+    id: ID!
+    text: String!
+  }
 `;
 
 // Resolvers
 const resolvers = {
   Query: {
+    //
     users(parent, args, ctx, info) {
       if (!args.query) {
         return users;
@@ -103,7 +141,13 @@ const resolvers = {
       });
     },
 
-    //
+    comments(parent, args, ctx, info) {
+      return comments;
+    },
+
+    // ////////////////
+    // Will be removed:START
+    // ////////////////
     me() {
       return {
         id: "1242423",
@@ -127,6 +171,9 @@ const resolvers = {
       //
     },
     /* eslint-enable */
+    // ////////////////
+    // Will be removed:END
+    // ////////////////
   },
   Post: {
     author(parent, args, ctx, info) {
