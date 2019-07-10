@@ -5,8 +5,10 @@ import { GraphQLServer } from "graphql-yoga";
 // Type defenintions (Schema)
 const typeDefs = `
   type Query {
+    greeting(name: String, position: String): String!
     me: User!
     post: Post!
+    test: User!
   }
 
   type User {
@@ -42,6 +44,18 @@ const resolvers = {
         published: false,
       };
     },
+    greeting(parent, args, ctx, info) {
+      if (args.name && args.position) {
+        return `Hello, ${args.name}! Pos:${args.position}`;
+      } else {
+        return "Hello";
+      }
+    },
+    /* eslint-disable */
+    test() {
+      //
+    },
+    /* eslint-enable */
   },
 };
 

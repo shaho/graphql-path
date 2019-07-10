@@ -15,6 +15,7 @@
     "no-console": "off", // console are allowed
     "quotes": "off", // Double quotes are allowed
     "object-shorthand": "off", // Object propery shorthand
+    "no-else-return": "off",
     "semi": "warn",
     "comma-dangle": ["warn"],
     "no-unused-vars": [
