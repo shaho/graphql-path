@@ -4,6 +4,7 @@
   "description": "GraphQL Path",
   "main": "index.js",
   "scripts": {
+    "start": "babel-node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,6 +27,7 @@
     "babel-preset-env": "^1.7.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.14.2"
+    "eslint-plugin-react": "^7.14.2",
+    "graphql-yoga": "^1.18.0"
   }
 }
