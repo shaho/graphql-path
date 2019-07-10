@@ -2,45 +2,45 @@ import { GraphQLServer } from "graphql-yoga";
 
 // Scalar types - String, Boolean, Int, Float, ID
 
-// Demo user data
+// Dummy user data
 const users = [
   {
     id: "1",
     name: "Andrew",
-    email: "andrew@example.com",
-    age: 27,
+    email: "shaho@ymail.com",
+    age: 39,
   },
   {
     id: "2",
     name: "Sarah",
-    email: "sarah@example.com",
+    email: "me@mead.io",
   },
   {
     id: "3",
     name: "Mike",
-    email: "mike@example.com",
+    email: "mike@test.com",
   },
 ];
 
 const posts = [
   {
     id: "10",
-    title: "GraphQL 101",
-    body: "This is how to use GraphQL...",
+    title: "Post 10",
+    body: "Post body 10",
     published: true,
     author: "1",
   },
   {
     id: "11",
-    title: "GraphQL 201",
-    body: "This is an advanced GraphQL post...",
+    title: "Post 11",
+    body: "Post body 11",
     published: false,
     author: "1",
   },
   {
     id: "12",
-    title: "Programming Music",
-    body: "",
+    title: "Post 12",
+    body: "Post body 12",
     published: false,
     author: "2",
   },
@@ -137,10 +137,9 @@ const resolvers = {
   },
   User: {
     posts(parent, args, ctx, info) {
-      // return posts.filter((post) => {
-      //   return post.author === parent.id;
-      // });
-      return posts.filter((post) => post.author === parent.id);
+      posts.filter((post) => {
+        return post.author === parent.id;
+      });
     },
   },
 };
