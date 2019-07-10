@@ -12,8 +12,10 @@
     "es6": true
   },
   "rules": {
-    "no-console": "off",
-    "quotes": "off",
+    "no-console": "off", // console are allowed
+    "quotes": "off", // Double quotes are allowed
+    "object-shorthand": "off", // Object propery shorthand
+    "semi": "warn",
     "comma-dangle": ["warn"],
     "no-unused-vars": [
       "warn",
