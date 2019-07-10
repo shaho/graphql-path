@@ -6,13 +6,13 @@ import { GraphQLServer } from "graphql-yoga";
 const users = [
   {
     id: "1",
-    name: "Shaho",
+    name: "Andrew",
     email: "shaho@ymail.com",
     age: 39,
   },
   {
     id: "2",
-    name: "Andrew",
+    name: "Sarah",
     email: "me@mead.io",
   },
   {
@@ -24,22 +24,25 @@ const users = [
 
 const posts = [
   {
-    id: "1",
-    title: "Post 1",
-    body: "Post body 1",
+    id: "10",
+    title: "Post 10",
+    body: "Post body 10",
     published: true,
+    author: "1",
   },
   {
-    id: "2",
-    title: "Post 2",
-    body: "Post body 2",
+    id: "11",
+    title: "Post 11",
+    body: "Post body 11",
     published: false,
+    author: "1",
   },
   {
-    id: "3",
-    title: "Post 3",
-    body: "Post body 3",
-    published: true,
+    id: "12",
+    title: "Post 12",
+    body: "Post body 12",
+    published: false,
+    author: "2",
   },
 ];
 
@@ -66,6 +69,7 @@ const typeDefs = `
     title: String!
     body: String!
     published: Boolean!
+    author: User!
   }
 `;
 
@@ -122,6 +126,13 @@ const resolvers = {
       //
     },
     /* eslint-enable */
+  },
+  Post: {
+    author(parent, args, ctx, info) {
+      return users.find((user) => {
+        return user.id === parent.author;
+      });
+    },
   },
 };
 
