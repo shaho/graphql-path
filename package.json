@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/shaho/graphql-path/issues"
   },
-  "homepage": "https://github.com/shaho/graphql-path#readme"
+  "homepage": "https://github.com/shaho/graphql-path#readme",
+  "devDependencies": {
+    "eslint": "^6.0.1"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  }
 }
