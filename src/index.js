@@ -52,27 +52,27 @@ let comments = [
     text:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
     author: "1",
-    post: "1",
+    post: "10",
   },
   {
     id: "2",
     text:
       "commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
     author: "1",
-    post: "1",
+    post: "10",
   },
   {
     id: "3",
     text: "commodo consequat. Duis aute irure dolor ",
     author: "2",
-    post: "2",
+    post: "11",
   },
   {
     id: "4",
     text:
       "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia d...",
     author: "3",
-    post: "2",
+    post: "11",
   },
 ];
 
@@ -85,7 +85,6 @@ const typeDefs = `
     me: User!
     post: Post!
     
-
     test: User!
   }
 
@@ -104,12 +103,14 @@ const typeDefs = `
     body: String!
     published: Boolean!
     author: User!
+    comments: [Comment!]!
   }
 
   type Comment {
     id: ID!
     text: String!
     author: User!
+    post: Post!
   }
 `;
 
@@ -177,10 +178,17 @@ const resolvers = {
     // Will be removed:END
     // ////////////////
   },
+
   Post: {
     author(parent, args, ctx, info) {
       return users.find((user) => {
         return user.id === parent.author;
+      });
+    },
+
+    comments(parent, args, ctx, info) {
+      return comments.filter((comment) => {
+        return comment.post === parent.id;
       });
     },
   },
@@ -203,6 +211,12 @@ const resolvers = {
     author(parent, args, ctx, info) {
       return users.find((user) => {
         return user.id === parent.author;
+      });
+    },
+
+    post(parent, args, ctx, info) {
+      return posts.find((post) => {
+        return post.id === parent.post;
       });
     },
   },
