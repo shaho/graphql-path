@@ -4,7 +4,7 @@ import uuid from "uuid/v4";
 // Scalar types - String, Boolean, Int, Float, ID
 
 // Demo user data
-const users = [
+let users = [
   {
     id: "1",
     name: "Andrew",
@@ -23,7 +23,7 @@ const users = [
   },
 ];
 
-const posts = [
+let posts = [
   {
     id: "10",
     title: "GraphQL 101",
@@ -49,31 +49,31 @@ const posts = [
 
 let comments = [
   {
-    id: "1",
+    id: "102",
     text:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
-    author: "1",
+    author: "3",
     post: "10",
   },
   {
-    id: "2",
+    id: "103",
     text:
       "commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
     author: "1",
     post: "10",
   },
   {
-    id: "3",
+    id: "104",
     text: "commodo consequat. Duis aute irure dolor ",
     author: "2",
     post: "11",
   },
   {
-    id: "4",
+    id: "105",
     text:
       "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia d...",
-    author: "3",
-    post: "11",
+    author: "1",
+    post: "12",
   },
 ];
 
@@ -91,6 +91,7 @@ const typeDefs = `
 
   type Mutation {
     createUser(data: createUserInput): User!
+    deleteUser(id: ID!): User!
     createPost(data: createPostInput): Post!
     createComment(data: createCommentInput): Comment!
   }
@@ -221,6 +222,29 @@ const resolvers = {
       users.push(user);
 
       return user;
+    },
+
+    deleteUser(parent, args, ctx, info) {
+      const userIndex = users.findIndex((user) => user.id === args.id);
+
+      if (userIndex === -1) {
+        throw new Error("User not found.");
+      }
+
+      const deletedUser = users.splice(userIndex, 1);
+
+      posts = posts.filter((post) => {
+        const match = post.author === args.id;
+        if (match) {
+          comments = comments.filter((comment) => comment.post !== post.id);
+        }
+
+        return !match;
+      });
+
+      comments = comments.filter((comment) => comment.author !== args.id);
+
+      return deletedUser[0];
     },
 
     createPost(parent, args, ctx, info) {
