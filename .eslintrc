@@ -20,6 +20,9 @@
     "no-else-return": "off",
     "semi": "warn",
     "arrow-parens": "off",
+    "no-shadow": "off",
+    "padded-blocks": "off",
+    "no-trailing-spaces": "off",
     "arrow-body-style": "off",
     "comma-dangle": ["warn"],
     "no-unused-vars": [
