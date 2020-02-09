@@ -1,2 +1,2 @@
-# graphql-mead
+# GraphQL
 Andrew Mead GraphQL Course
