@@ -1,2 +1,2 @@
 # GraphQL
-Andrew Mead GraphQL Course
+Andrew Mead's GraphQL Course
